@@ -2,13 +2,14 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function RegisterPage() {
   const [formData, setFormData] = useState({
     nama: "",
     email: "",
     password: "",
-    role: "PASIEN",
+    role: "Pasien",
   });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -44,7 +45,7 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 text-black">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 text-black p-4">
       <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
         <h1 className="text-2xl font-bold mb-6 text-center text-blue-600">
           SmartPharmacy
@@ -118,6 +119,18 @@ export default function RegisterPage() {
             {loading ? "Memproses..." : "Daftar Sekarang"}
           </button>
         </form>
+
+        <div className="mt-6 text-center">
+          <p className="text-sm text-gray-600">
+            Sudah punya akun?{" "}
+            <Link
+              href="/login"
+              className="text-blue-600 font-semibold hover:underline"
+            >
+              Masuk di sini
+            </Link>
+          </p>
+        </div>
       </div>
     </div>
   );
