@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 interface User {
   id: number;
   nama: string;
-  role: "PASIEN" | "APOTEKER";
+  role: "Pasien" | "Apoteker";
 }
 
 export default function DashboardPage() {
@@ -18,7 +18,6 @@ export default function DashboardPage() {
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
-
     const storedData = localStorage.getItem("user");
 
     if (!storedData) {
@@ -77,7 +76,7 @@ export default function DashboardPage() {
         </header>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {user.role === "PASIEN" && (
+          {user.role === "Pasien" && (
             <>
               <div className="bg-white p-6 rounded-xl shadow-sm border hover:shadow-md transition cursor-pointer">
                 <h3 className="font-bold text-lg mb-2 text-blue-600">
@@ -98,7 +97,7 @@ export default function DashboardPage() {
             </>
           )}
 
-          {user.role === "APOTEKER" && (
+          {user.role === "Apoteker" && (
             <>
               <div className="bg-white p-6 rounded-xl shadow-sm border hover:shadow-md transition cursor-pointer">
                 <h3 className="font-bold text-lg mb-2 text-green-600">
