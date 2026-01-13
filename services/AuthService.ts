@@ -51,8 +51,6 @@ export class AuthService {
     );
     return rows;
   }
-<<<<<<< Updated upstream
-=======
 
   static async login(data: LoginInput) {
     const { email, password } = data;
@@ -83,5 +81,4 @@ export class AuthService {
       },
     };
   }
->>>>>>> Stashed changes
 }
