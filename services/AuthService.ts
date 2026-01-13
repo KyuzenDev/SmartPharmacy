@@ -37,4 +37,13 @@ export class AuthService {
       role,
     };
   }
+
+  static async getAllUsers() {
+    // Mengambil data user tanpa menyertakan password demi keamanan
+    const [rows] = await db.execute<RowDataPacket[]>(
+      "SELECT id, nama, email, role, createdAt FROM User ORDER BY createdAt DESC"
+    );
+    return rows;
+  }
 }
+
