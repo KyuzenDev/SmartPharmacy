@@ -104,8 +104,8 @@ export default function RegisterPage() {
                 setFormData({ ...formData, role: e.target.value })
               }
             >
-              <option value="PASIEN">Pasien</option>
-              <option value="APOTEKER">Apoteker</option>
+              <option value="Pasien">Pasien</option>
+              <option value="Apoteker">Apoteker</option>
             </select>
           </div>
 
