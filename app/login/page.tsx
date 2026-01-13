@@ -21,12 +21,11 @@ export default function LoginPage() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error);
 
-      // Simpan token di localStorage (untuk sementara)
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify(data.user));
 
       alert("Login Berhasil!");
-      router.push("/dashboard"); // Alihkan ke halaman utama
+      router.push("/dashboard");
     } catch (err: unknown) {
       setError(err instanceof Error ? err.message : "Terjadi kesalahan");
     }
