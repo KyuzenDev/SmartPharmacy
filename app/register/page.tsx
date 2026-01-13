@@ -31,7 +31,7 @@ export default function RegisterPage() {
       if (!res.ok) throw new Error(data.error || "Terjadi kesalahan");
 
       alert("Registrasi Berhasil! Silakan Login.");
-      router.push("/login"); // Alihkan ke halaman login setelah sukses
+      router.push("/login");
     } catch (err: unknown) {
       if (err instanceof Error) {
         setError(err.message);
