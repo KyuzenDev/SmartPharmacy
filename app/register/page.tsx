@@ -2,13 +2,14 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function RegisterPage() {
   const [formData, setFormData] = useState({
     nama: "",
     email: "",
     password: "",
-    role: "PASIEN",
+    role: "Pasien",
   });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -31,7 +32,7 @@ export default function RegisterPage() {
       if (!res.ok) throw new Error(data.error || "Terjadi kesalahan");
 
       alert("Registrasi Berhasil! Silakan Login.");
-      router.push("/login"); // Alihkan ke halaman login setelah sukses
+      router.push("/login");
     } catch (err: unknown) {
       if (err instanceof Error) {
         setError(err.message);
@@ -44,7 +45,7 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 text-black">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 text-black p-4">
       <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
         <h1 className="text-2xl font-bold mb-6 text-center text-blue-600">
           SmartPharmacy
@@ -103,21 +104,33 @@ export default function RegisterPage() {
                 setFormData({ ...formData, role: e.target.value })
               }
             >
-              <option value="PASIEN">Pasien</option>
-              <option value="APOTEKER">Apoteker</option>
+              <option value="Pasien">Pasien</option>
+              <option value="Apoteker">Apoteker</option>
             </select>
           </div>
 
           <button
             type="submit"
             disabled={loading}
-            className={`w-full py-2 rounded text-white font-semibold ${
+            className={`w-full py-2 rounded text-white font-semibold cursor-pointer ${
               loading ? "bg-gray-400" : "bg-blue-600 hover:bg-blue-700"
             } transition`}
           >
             {loading ? "Memproses..." : "Daftar Sekarang"}
           </button>
         </form>
+
+        <div className="mt-6 text-center">
+          <p className="text-sm text-gray-600">
+            Sudah punya akun?{" "}
+            <Link
+              href="/login"
+              className="text-blue-600 font-semibold hover:underline"
+            >
+              Masuk di sini
+            </Link>
+          </p>
+        </div>
       </div>
     </div>
   );

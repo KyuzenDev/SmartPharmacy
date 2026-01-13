@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 interface User {
   id: number;
   nama: string;
-  role: "Pasien" | "Apoteker";
+  role: "Pasien" | "Apoteker" | "Admin";
 }
 
 export default function DashboardPage() {
@@ -18,7 +18,6 @@ export default function DashboardPage() {
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
-
     const storedData = localStorage.getItem("user");
 
     if (!storedData) {
@@ -117,6 +116,17 @@ export default function DashboardPage() {
                 </p>
               </div>
             </>
+          )}
+
+          {user.role === "Admin" && (
+            <div className="bg-white p-6 rounded-xl shadow-sm cursor-pointer border border-red-200 hover:shadow-md transition">
+              <h3 className="font-bold text-lg mb-2 text-red-600">
+                Panel Admin
+              </h3>
+              <p className="text-sm text-gray-500">
+                Kelola semua user, apoteker, dan laporan sistem.
+              </p>
+            </div>
           )}
 
           <div className="bg-white p-6 rounded-xl shadow-sm border hover:shadow-md transition cursor-pointer">
