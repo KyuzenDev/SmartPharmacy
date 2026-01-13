@@ -1,4 +1,3 @@
-// src/services/AuthService.ts
 import { db } from "@/lib/db";
 import bcrypt from "bcryptjs";
 import { ResultSetHeader, RowDataPacket } from "mysql2";
@@ -7,7 +6,7 @@ interface RegisterInput {
   nama: string;
   email: string;
   password: string;
-    role: "PASIEN" | "APOTEKER";
+  role: "PASIEN" | "APOTEKER";
 }
 
 export class AuthService {
@@ -39,11 +38,9 @@ export class AuthService {
   }
 
   static async getAllUsers() {
-    // Mengambil data user tanpa menyertakan password demi keamanan
     const [rows] = await db.execute<RowDataPacket[]>(
       "SELECT id, nama, email, role, createdAt FROM User ORDER BY createdAt DESC"
     );
     return rows;
   }
 }
-
